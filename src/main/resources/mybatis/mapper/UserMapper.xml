@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.sh.model.User">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="LOGIN_ID" jdbcType="VARCHAR" property="loginId" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="IDCARD" jdbcType="VARCHAR" property="idcard" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="UPDATE_AT" jdbcType="TIMESTAMP" property="updateAt" />
+    <result column="CREATE_AT" jdbcType="TIMESTAMP" property="createAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, LOGIN_ID, USER_NAME, PASSWORD, PHONE, IDCARD, STATUS, UPDATE_AT, CREATE_AT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from T_DZ_USER
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+</mapper>
